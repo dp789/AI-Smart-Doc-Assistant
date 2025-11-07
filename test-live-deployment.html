@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Deployment Diagnostic Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+        .loading { background: #cce7ff; border: 1px solid #99d6ff; color: #004085; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        .log { background: #f8f9fa; border: 1px solid #dee2e6; padding: 10px; margin: 10px 0; border-radius: 5px; font-family: monospace; white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <h1>🚨 Live Deployment Diagnostic Tool</h1>
+    <p>This tool will help diagnose the 500 error on <strong>nitor-smartdocs.azurewebsites.net</strong></p>
+    
+    <div id="results"></div>
+    
+    <h2>🧪 Test Controls</h2>
+    <button onclick="runAllTests()">Run All Tests</button>
+    <button onclick="testBasicApi()">Test Basic API</button>
+    <button onclick="testUploadStatus()">Test Upload Status</button>
+    <button onclick="testUploadDebug()">Test Upload Debug</button>
+    <button onclick="clearResults()">Clear Results</button>
+    
+    <h2>📋 Test Log</h2>
+    <div id="log" class="log"></div>
+
+    <script>
+        const baseUrl = 'https://nitor-smartdocs.azurewebsites.net';
+        const resultsDiv = document.getElementById('results');
+        const logDiv = document.getElementById('log');
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.textContent += `[${timestamp}] ${message}\n`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+        
+        function addResult(id, title, status, message, details = '') {
+            const existing = document.getElementById(id);
+            if (existing) existing.remove();
+            
+            const div = document.createElement('div');
+            div.id = id;
+            div.className = `test-result ${status}`;
+            div.innerHTML = `
+                <h3>${title}</h3>
+                <p>${message}</p>
+                ${details ? `<details><summary>Details</summary><pre>${details}</pre></details>` : ''}
+            `;
+            resultsDiv.appendChild(div);
+        }
+        
+        async function testEndpoint(name, url, description) {
+            log(`Testing ${name}: ${url}`);
+            addResult(name.toLowerCase().replace(/\s+/g, '-'), name, 'loading', 'Testing...', '');
+            
+            try {
+                const startTime = Date.now();
+                const response = await fetch(url, {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache'
+                });
+                const endTime = Date.now();
+                const duration = endTime - startTime;
+                
+                log(`Response: ${response.status} ${response.statusText} (${duration}ms)`);
+                
+                if (response.ok) {
+                    try {
+                        const data = await response.json();
+                        addResult(
+                            name.toLowerCase().replace(/\s+/g, '-'), 
+                            `✅ ${name}`, 
+                            'success', 
+                            `Success! Status: ${response.status} (${duration}ms)`,
+                            JSON.stringify(data, null, 2)
+                        );
+                        log(`✅ ${name} - SUCCESS`);
+                        return { success: true, data, status: response.status };
+                    } catch (jsonError) {
+                        const text = await response.text();
+                        addResult(
+                            name.toLowerCase().replace(/\s+/g, '-'), 
+                            `⚠️ ${name}`, 
+                            'warning', 
+                            `Response received but not JSON. Status: ${response.status}`,
+                            text
+                        );
+                        log(`⚠️ ${name} - Non-JSON response`);
+                        return { success: false, error: 'Non-JSON response', text };
+                    }
+                } else {
+                    const errorText = await response.text();
+                    addResult(
+                        name.toLowerCase().replace(/\s+/g, '-'), 
+                        `❌ ${name}`, 
+                        'error', 
+                        `Failed! Status: ${response.status} ${response.statusText}`,
+                        errorText
+                    );
+                    log(`❌ ${name} - FAILED (${response.status})`);
+                    return { success: false, status: response.status, error: errorText };
+                }
+            } catch (error) {
+                addResult(
+                    name.toLowerCase().replace(/\s+/g, '-'), 
+                    `❌ ${name}`, 
+                    'error', 
+                    `Network Error: ${error.message}`,
+                    `Error Type: ${error.name}\nMessage: ${error.message}\nStack: ${error.stack}`
+                );
+                log(`❌ ${name} - NETWORK ERROR: ${error.message}`);
+                return { success: false, error: error.message };
+            }
+        }
+        
+        async function testBasicApi() {
+            return await testEndpoint('Basic API Test', `${baseUrl}/api/test`, 'Tests if the backend server is responding');
+        }
+        
+        async function testUploadStatus() {
+            return await testEndpoint('Upload Status', `${baseUrl}/api/upload/status`, 'Tests upload service availability');
+        }
+        
+        async function testUploadDebug() {
+            return await testEndpoint('Upload Debug', `${baseUrl}/api/upload/debug`, 'Gets debug information');
+        }
+        
+        async function testRootUrl() {
+            return await testEndpoint('Root URL', baseUrl, 'Tests the main application URL');
+        }
+        
+        async function runAllTests() {
+            log('🚀 Starting comprehensive diagnostic tests...');
+            clearResults();
+            
+            // Test in order of importance
+            const tests = [
+                { name: 'Root URL', fn: testRootUrl },
+                { name: 'Basic API', fn: testBasicApi },
+                { name: 'Upload Status', fn: testUploadStatus },
+                { name: 'Upload Debug', fn: testUploadDebug }
+            ];
+            
+            for (const test of tests) {
+                try {
+                    log(`\n--- Testing ${test.name} ---`);
+                    await test.fn();
+                    await new Promise(resolve => setTimeout(resolve, 500)); // Small delay between tests
+                } catch (error) {
+                    log(`Error during ${test.name}: ${error.message}`);
+                }
+            }
+            
+            log('\n🏁 All tests completed!');
+            generateDiagnosticReport();
+        }
+        
+        function generateDiagnosticReport() {
+            log('\n📋 DIAGNOSTIC REPORT:');
+            log('===================');
+            
+            const results = Array.from(document.querySelectorAll('.test-result'));
+            const successCount = results.filter(r => r.classList.contains('success')).length;
+            const errorCount = results.filter(r => r.classList.contains('error')).length;
+            const warningCount = results.filter(r => r.classList.contains('warning')).length;
+            
+            log(`✅ Successful tests: ${successCount}`);
+            log(`❌ Failed tests: ${errorCount}`);
+            log(`⚠️ Warning tests: ${warningCount}`);
+            
+            if (errorCount === results.length) {
+                log('\n🚨 ALL TESTS FAILED - Likely server startup issue');
+                log('Action: Check Azure Web App logs immediately');
+            } else if (successCount > 0) {
+                log('\n🎯 Some tests passed - Server is partially working');
+                log('Action: Focus on specific failing components');
+            }
+            
+            log('\nNext steps:');
+            log('1. Check Azure Portal → App Services → nitor-smartdocs → Log stream');
+            log('2. Verify environment variables in Configuration');
+            log('3. Restart the app service if needed');
+        }
+        
+        function clearResults() {
+            resultsDiv.innerHTML = '';
+            logDiv.textContent = '';
+            log('🧹 Results cleared. Ready for new tests.');
+        }
+        
+        // Auto-run basic test on page load
+        window.addEventListener('load', () => {
+            log('🔧 Diagnostic tool loaded. Click "Run All Tests" to start.');
+        });
+    </script>
+</body>
+</html>

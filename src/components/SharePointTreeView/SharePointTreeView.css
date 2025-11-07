@@ -1,0 +1,502 @@
+.sharepoint-browser {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tree structure styling */
+.tree-node {
+  padding: 1px 0; 
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px; 
+  margin: 1px 0; 
+  border-radius: 3px; 
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px; 
+}
+
+.tree-item:hover {
+  background-color: #f0f4f8; 
+}
+
+.tree-children {
+  margin-left: 16px; 
+  padding-left: 8px; 
+  border-left: 1px solid #d1d5db; 
+  position: relative;
+}
+
+/* Add connecting lines for better visual hierarchy */
+.tree-children::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #d1d5db;
+}
+
+/* Add horizontal connecting lines */
+.tree-node:not(:last-child) .tree-children::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 20px;
+  width: 8px;
+  height: 1px;
+  background: #d1d5db;
+}
+
+/* Icons and labels */
+.item-icon {
+  width: 18px; 
+  height: 18px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px; 
+  font-size: 14px; 
+}
+
+.expand-icon {
+  width: 16px; 
+  height: 16px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  font-size: 10px; 
+  color: #666;
+}
+
+.item-name {
+  font-size: 13px; 
+  font-weight: 500;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Update the selected files counter style */
+.selected-files-count {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Header with buttons */
+.sharepoint-actions-header {
+  display: flex;
+  width: 100%;
+  padding: 8px;
+  background-color: #f0f3f9;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative; 
+  z-index: 10; /* Lower than tabs but higher than content */
+}
+
+/* Search container */
+.search-container {
+  flex: 1;
+  max-width: 300px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: border-color 0.2s ease;
+}
+
+.search-input-wrapper:focus-within {
+  border-color: #0078d4;
+  box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.1);
+}
+
+.search-icon {
+  color: #6b7280;
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 4px 0;
+  background: transparent;
+  color: #374151;
+}
+
+.search-input::placeholder {
+  color: #9ca3af;
+}
+
+.clear-search-button {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.clear-search-button:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.clear-search-button svg {
+  font-size: 16px;
+}
+
+/* Action buttons container */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Button divider */
+.button-divider {
+  width: 1px;
+  height: 28px;
+  background-color: #d1d5db;
+  margin: 0 4px;
+}
+
+/* AI Agent Buttons - Professional gradient design */
+.ai-agent-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-agent-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.ai-agent-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.ai-agent-button .button-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.ai-agent-button:hover:not(:disabled) .button-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.ai-agent-button .button-text {
+  white-space: nowrap;
+}
+
+/* Transcript Agent Button - Blue/Teal gradient */
+.transcript-agent-button {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.transcript-agent-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0284c7 0%, #0891b2 100%);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+  transform: translateY(-1px);
+}
+
+.transcript-agent-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.3);
+}
+
+/* CV Screening Button - Purple/Violet gradient */
+.cv-screening-button {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cv-screening-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+.cv-screening-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(139, 92, 246, 0.3);
+}
+
+/* Disabled state for AI Agent buttons */
+.ai-agent-button:disabled {
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+  transform: none;
+}
+
+.ai-agent-button:disabled .button-icon {
+  animation: none;
+}
+
+/* Processing animation for AI Agent buttons */
+.ai-agent-button:disabled .button-icon {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* Original Upload and Clear buttons */
+.sharepoint-upload {
+  background-color: #0078d4;
+  color: white;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.clear-button {
+  background-color: #605e5c;
+  color: white;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Disable buttons during upload */
+.sharepoint-upload:disabled,
+.clear-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.sharepoint-upload:hover:not(:disabled) {
+  background-color: #106ebe;
+  box-shadow: 0 4px 8px rgba(0, 120, 212, 0.3);
+  transform: translateY(-1px);
+}
+
+.clear-button:hover:not(:disabled) {
+  background-color: #484644;
+  box-shadow: 0 4px 8px rgba(96, 94, 92, 0.3);
+  transform: translateY(-1px);
+}
+
+
+/* Animations */
+@keyframes slideIn {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* File vs Folder styling */
+.tree-item.folder-item {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.tree-item.file-item {
+  font-weight: 400;
+  color: #4b5563;
+  padding-left: 12px; 
+}
+
+.tree-item.file-item:hover {
+  background-color: #e0f2fe;
+  border-left: 3px solid #0ea5e9;
+}
+
+.tree-item.folder-item:hover {
+  background-color: #fef3c7;
+  border-left: 3px solid #f59e0b;
+}
+
+/* Selected file styling */
+.file-item.selected {
+  background-color: #dbeafe !important;
+  border: 1px solid #3b82f6;
+  border-left: 3px solid #3b82f6 !important;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Site level items (top level) */
+.tree-node[style*="margin-left: 0px"] .tree-item {
+  font-weight: 700;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 4px;
+}
+
+/* Improve status badge styling */
+.file-type-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+.file-type-badge.not-allowed {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* File checkbox */
+.file-checkbox {
+  margin-right: 6px;
+  cursor: pointer;
+  transform: scale(0.9); 
+}
+
+/* Tree content area */
+.tree-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px; 
+  height: 0; 
+  line-height: 1.2; 
+}
+
+/* Toast notification styles for SharePoint context */
+.toast-container {
+  z-index: 1300; /* Ensure it's above all other elements */
+}
+
+/* Ensure toast doesn't interfere with SharePoint tree interactions */
+.toast-container .MuiSnackbar-root {
+  pointer-events: auto;
+}
+
+.toast-container .MuiAlert-root {
+  font-family: inherit;
+}
+
+/* Search highlighting */
+.search-highlight {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 1px 2px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Search result styling */
+.tree-item.search-match {
+  background-color: #fef3c7;
+  border-left: 3px solid #f59e0b;
+}
+
+.tree-item.search-match:hover {
+  background-color: #fde68a;
+}
+
+/* Responsive design for search and buttons */
+@media (max-width: 768px) {
+  .sharepoint-actions-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  
+  .search-container {
+    max-width: none;
+  }
+  
+  .action-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Stack AI Agent buttons on mobile */
+  .ai-agent-button {
+    flex: 1 1 45%;
+    min-width: 140px;
+    justify-content: center;
+  }
+  
+  .sharepoint-upload,
+  .clear-button {
+    flex: 1 1 45%;
+    min-width: 100px;
+  }
+  
+  .button-divider {
+    display: none;
+  }
+}
+
+/* Extra small screens - full width buttons */
+@media (max-width: 480px) {
+  .ai-agent-button,
+  .sharepoint-upload,
+  .clear-button {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  
+  .ai-agent-button .button-text {
+    font-size: 12px;
+  }
+}
+

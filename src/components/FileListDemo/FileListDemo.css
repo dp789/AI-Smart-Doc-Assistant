@@ -1,0 +1,215 @@
+/* File List Demo Customizations */
+.file-list-demo {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Custom scrollbar for file lists */
+.file-list-demo .MuiPaper-root::-webkit-scrollbar {
+  width: 8px;
+}
+
+.file-list-demo .MuiPaper-root::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.file-list-demo .MuiPaper-root::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.file-list-demo .MuiPaper-root::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* List item hover effects */
+.file-list-demo .MuiListItem-root {
+  transition: all 0.2s ease;
+}
+
+.file-list-demo .MuiListItem-root:hover {
+  background-color: #f8fafc !important;
+  transform: translateX(4px);
+}
+
+/* Card hover effects */
+.file-list-demo .MuiCard-root {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.file-list-demo .MuiCard-root:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon button hover effects */
+.file-list-demo .MuiIconButton-root {
+  transition: all 0.2s ease;
+}
+
+.file-list-demo .MuiIconButton-root:hover {
+  transform: scale(1.1);
+  background-color: #f1f5f9;
+}
+
+/* Chip styling */
+.file-list-demo .MuiChip-root {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 12px;
+}
+
+/* Typography enhancements */
+.file-list-demo .MuiTypography-root {
+  transition: color 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .file-list-demo .MuiGrid-item {
+    margin-bottom: 16px;
+  }
+  
+  .file-list-demo .MuiCard-root {
+    height: auto;
+  }
+}
+
+/* Animation for file items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.file-list-demo .MuiListItem-root,
+.file-list-demo .MuiGrid-item {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Staggered animation for grid items */
+.file-list-demo .MuiGrid-item:nth-child(1) { animation-delay: 0.1s; }
+.file-list-demo .MuiGrid-item:nth-child(2) { animation-delay: 0.2s; }
+.file-list-demo .MuiGrid-item:nth-child(3) { animation-delay: 0.3s; }
+.file-list-demo .MuiGrid-item:nth-child(4) { animation-delay: 0.4s; }
+.file-list-demo .MuiGrid-item:nth-child(5) { animation-delay: 0.5s; }
+.file-list-demo .MuiGrid-item:nth-child(6) { animation-delay: 0.6s; }
+.file-list-demo .MuiGrid-item:nth-child(7) { animation-delay: 0.7s; }
+.file-list-demo .MuiGrid-item:nth-child(8) { animation-delay: 0.8s; }
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .file-list-demo .MuiListItem-root,
+  .file-list-demo .MuiCard-root,
+  .file-list-demo .MuiIconButton-root,
+  .file-list-demo .MuiGrid-item {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Custom focus styles */
+.file-list-demo .MuiListItem-root:focus-visible,
+.file-list-demo .MuiCard-root:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Empty state styling */
+.file-list-demo .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #64748b;
+  text-align: center;
+}
+
+.file-list-demo .empty-state .MuiSvgIcon-root {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* Loading state styling */
+.file-list-demo .loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* File type specific styling */
+.file-list-demo .file-type-document .MuiSvgIcon-root {
+  color: #ef4444;
+}
+
+.file-list-demo .file-type-image .MuiSvgIcon-root {
+  color: #10b981;
+}
+
+.file-list-demo .file-type-video .MuiSvgIcon-root {
+  color: #3b82f6;
+}
+
+.file-list-demo .file-type-audio .MuiSvgIcon-root {
+  color: #8b5cf6;
+}
+
+.file-list-demo .file-type-archive .MuiSvgIcon-root {
+  color: #f59e0b;
+}
+
+/* Action buttons styling */
+.file-list-demo .action-buttons {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.file-list-demo .MuiListItem-root:hover .action-buttons,
+.file-list-demo .MuiCard-root:hover .action-buttons {
+  opacity: 1;
+}
+
+/* File size and date styling */
+.file-list-demo .file-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1200px) {
+  .file-list-demo .MuiGrid-item {
+    flex-basis: 25%;
+  }
+}
+
+@media (max-width: 900px) {
+  .file-list-demo .MuiGrid-item {
+    flex-basis: 33.333%;
+  }
+}
+
+@media (max-width: 600px) {
+  .file-list-demo .MuiGrid-item {
+    flex-basis: 50%;
+  }
+}
+
+@media (max-width: 400px) {
+  .file-list-demo .MuiGrid-item {
+    flex-basis: 100%;
+  }
+} 
