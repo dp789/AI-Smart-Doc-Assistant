@@ -1,0 +1,68 @@
+/* File List Example Customizations */
+.file-list-example {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Custom scrollbar */
+.file-list-example .MuiPaper-root::-webkit-scrollbar {
+  width: 8px;
+}
+
+.file-list-example .MuiPaper-root::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.file-list-example .MuiPaper-root::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.file-list-example .MuiPaper-root::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Typography enhancements */
+.file-list-example .MuiTypography-root {
+  transition: color 0.2s ease;
+}
+
+/* Paper styling */
+.file-list-example .MuiPaper-root {
+  transition: all 0.3s ease;
+}
+
+.file-list-example .MuiPaper-root:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .file-list-example .MuiBox-root {
+    padding: 8px;
+  }
+}
+
+/* Animation for content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.file-list-example .MuiPaper-root {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .file-list-example .MuiPaper-root {
+    animation: none !important;
+    transition: none !important;
+  }
+} 

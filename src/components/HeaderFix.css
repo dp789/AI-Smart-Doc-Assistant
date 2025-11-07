@@ -1,0 +1,90 @@
+/* Header Fix CSS - Additional styling to ensure visibility */
+
+/* Extremely specific selectors to override Material-UI */
+.MuiAppBar-root.MuiAppBar-positionStatic.header-forced-styling {
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%) !important;
+  border-bottom: 2px solid #e0e0e0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  color: #212121 !important;
+}
+
+/* Force navigation button styling with high specificity */
+.MuiButton-root.nav-button-forced,
+.MuiButton-text.nav-button-forced {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #616161 !important;
+  border: 1px solid rgba(224, 224, 224, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 12px !important;
+  font-weight: 500 !important;
+}
+
+.MuiButton-root.nav-button-forced:hover,
+.MuiButton-text.nav-button-forced:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #1976d2 !important;
+  border-color: rgba(33, 150, 243, 0.3) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15) !important;
+}
+
+/* Force text colors for better visibility */
+.MuiTypography-root.header-text-forced {
+  color: #212121 !important;
+  font-weight: 700 !important;
+}
+
+.MuiTypography-root.header-subtext-forced {
+  color: #616161 !important;
+}
+
+/* Override any transparent backgrounds */
+.MuiToolbar-root {
+  background: transparent !important;
+}
+
+/* Ensure menu icon is visible */
+.MuiIconButton-root .MuiSvgIcon-root {
+  color: #616161 !important;
+}
+
+.MuiIconButton-root:hover .MuiSvgIcon-root {
+  color: #1976d2 !important;
+}
+
+/* Force active state styling */
+.MuiButton-root.nav-button-active {
+  background: #e3f2fd !important;
+  color: #1976d2 !important;
+  border-color: #2196f3 !important;
+  font-weight: 600 !important;
+}
+
+/* Mobile drawer styling */
+.MuiDrawer-paper {
+  background: #fafafa !important;
+  border-right: 1px solid #e0e0e0 !important;
+}
+
+/* Notification badge */
+.MuiBadge-badge {
+  background: linear-gradient(135deg, #f44336, #d32f2f) !important;
+  color: white !important;
+}
+
+/* Avatar styling */
+.MuiAvatar-root {
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 4px 20px rgba(33, 150, 243, 0.2) !important;
+}
+
+/* Enhanced Avatar in Header */
+.header-user-avatar {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.header-user-avatar:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 20px rgba(33, 150, 243, 0.3));
+}

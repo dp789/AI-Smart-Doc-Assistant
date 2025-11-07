@@ -1,0 +1,605 @@
+/* SmartDocs AI Header - Modern Design System */
+
+/* ===== MODERN CARD-BASED NAVIGATION ===== */
+
+/* Enhanced Navigation Cards */
+.nav-card-container {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 8px 40px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-card-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.12),
+    0 12px 48px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Individual navigation cards */
+.nav-card-item {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-card-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-card-item:hover::before {
+  left: 100%;
+}
+
+/* Color-coded navigation sections */
+.nav-documents-active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.nav-upload-active {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.nav-files-active {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.nav-ai-chat-active {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.nav-assistant-active {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+.nav-tools-active {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Hover states for inactive cards */
+.nav-card-item:not(.nav-active):hover {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESPONSIVE CARD NAVIGATION ===== */
+
+/* Prevent horizontal overflow from navigation */
+.nav-card-container {
+  max-width: 100%;
+  overflow-x: hidden;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.nav-card-item {
+  flex-shrink: 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.nav-card-item .MuiTypography-root {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Extra large screens - Full card layout */
+@media (min-width: 1400px) {
+  .nav-card-container {
+    gap: 1.5rem;
+    padding: 8px 12px;
+  }
+  
+  .nav-card-item {
+    padding: 8px 16px;
+    min-width: auto;
+  }
+}
+
+/* Large screens - Full card layout */
+@media (max-width: 1399px) and (min-width: 1200px) {
+  .nav-card-container {
+    gap: 1.2rem;
+    padding: 6px 10px;
+  }
+  
+  .nav-card-item {
+    padding: 6px 14px;
+    min-width: auto;
+  }
+  
+  .nav-card-item .MuiTypography-root {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Medium screens - Compact cards */
+@media (max-width: 1199px) and (min-width: 1000px) {
+  .nav-card-container {
+    gap: 1rem;
+    padding: 6px 8px;
+  }
+  
+  .nav-card-item {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .nav-card-item .MuiTypography-root {
+    font-size: 0.8rem !important;
+  }
+  
+  .nav-card-item .MuiSvgIcon-root {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Small screens - Minimal cards */
+@media (max-width: 999px) and (min-width: 800px) {
+  .nav-card-container {
+    gap: 0.6rem;
+    padding: 4px 6px;
+  }
+  
+  .nav-card-item {
+    padding: 4px 8px;
+    min-width: auto;
+  }
+  
+  .nav-card-item .MuiTypography-root {
+    font-size: 0.75rem !important;
+  }
+  
+  .nav-card-item .MuiSvgIcon-root {
+    font-size: 1rem !important;
+  }
+}
+
+/* Tablet screens - Icon only */
+@media (max-width: 799px) and (min-width: 600px) {
+  .nav-card-container {
+    gap: 0.4rem;
+    padding: 4px;
+  }
+  
+  .nav-card-item {
+    padding: 6px 8px;
+    min-width: auto;
+  }
+  
+  .nav-card-item .MuiTypography-root {
+    display: none; /* Hide text on smaller screens */
+  }
+  
+  .nav-card-item .MuiSvgIcon-root {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Mobile - Hide card navigation (use drawer) */
+@media (max-width: 599px) {
+  .nav-card-container {
+    display: none;
+  }
+}
+
+/* ===== ENHANCED HEADER GRADIENT ===== */
+
+/* Modern gradient background for header */
+.header-modern-gradient {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(248, 250, 252, 0.98) 25%,
+    rgba(241, 245, 249, 0.95) 50%,
+    rgba(248, 250, 252, 0.98) 75%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Enhanced Navigation Items */
+.nav-item-material {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item-material::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.nav-item-material:hover::before {
+  left: 100%;
+}
+
+.nav-item-material:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+}
+
+/* Modern slide-in animation */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-item-material {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Responsive Navigation */
+@media (max-width: 1024px) {
+  .nav-item-material {
+    margin: 0.4rem 0;
+    border-radius: 12px;
+  }
+}
+
+/* Custom scrollbar for mobile drawer */
+.MuiDrawer-paper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.MuiDrawer-paper::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.MuiDrawer-paper::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  border-radius: 10px;
+  border: 2px solid #f5f5f5;
+}
+
+.MuiDrawer-paper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #1976d2, #1565c0);
+}
+
+/* Smooth transitions for all interactive elements */
+.MuiButton-root,
+.MuiIconButton-root,
+.MuiListItemButton-root {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Modern focus styles for accessibility */
+.MuiButton-root:focus-visible,
+.MuiIconButton-root:focus-visible,
+.MuiListItemButton-root:focus-visible {
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.1);
+}
+
+/* Enhanced hover effects with modern transforms */
+.MuiButton-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.15);
+}
+
+.MuiIconButton-root:hover {
+  transform: scale(1.08);
+  background-color: rgba(33, 150, 243, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Modern chip styling */
+.MuiChip-root {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced avatar styling */
+.MuiAvatar-root {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 20px rgba(33, 150, 243, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.MuiAvatar-root:hover {
+  border-color: rgba(33, 150, 243, 0.3);
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 8px 30px rgba(33, 150, 243, 0.3);
+}
+
+/* Modern menu styling */
+.MuiMenu-paper {
+  border-radius: 16px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Enhanced toolbar */
+.MuiToolbar-root {
+  min-height: 72px !important;
+  padding: 0 24px !important;
+  backdrop-filter: blur(20px);
+}
+
+/* Modern AppBar styling */
+.MuiAppBar-root {
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Modern typography enhancements */
+.MuiTypography-h6 {
+  text-shadow: none;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  /* Removed gradient text for better readability */
+  color: #1e293b !important;
+}
+
+/* Responsive typography */
+@media (max-width: 600px) {
+  .MuiTypography-h6 {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Modern divider styling */
+.MuiDivider-root {
+  margin: 0.8rem 0;
+  opacity: 0.8;
+  border-color: rgba(224, 224, 224, 0.6);
+  background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+}
+
+/* Enhanced list item animations */
+.MuiListItemIcon-root {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.MuiListItemButton-root:hover .MuiListItemIcon-root {
+  transform: scale(1.15) rotate(5deg);
+  color: #2196f3;
+}
+
+/* Modern badge styling */
+.MuiBadge-badge {
+  font-weight: 700;
+  font-size: 0.7rem;
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Enhanced focus management */
+.MuiDrawer-root:focus-within {
+  outline: none;
+}
+
+/* Modern loading states */
+.MuiButton-root.Mui-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(50%);
+}
+
+/* Button hover effects with glass morphism */
+.MuiButton-outlined:hover {
+  border-width: 2px;
+  background: rgba(33, 150, 243, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Glass morphism mobile drawer */
+.MuiDrawer-paper {
+  background: rgba(250, 250, 250, 0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(224, 224, 224, 0.3);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Modern navigation button active states */
+.MuiButton-root.Mui-selected {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb) !important;
+  color: #1976d2 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+/* Smooth icon transitions with spring effect */
+.MuiSvgIcon-root {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Glass morphism focus ring */
+.MuiButton-root:focus-visible::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid rgba(33, 150, 243, 0.5);
+  border-radius: 12px;
+  pointer-events: none;
+  background: rgba(33, 150, 243, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .nav-item-material,
+  .MuiButton-root,
+  .MuiIconButton-root,
+  .MuiListItemButton-root,
+  .MuiAvatar-root,
+  .MuiAppBar-root,
+  .MuiBadge-badge {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Modern dark mode support */
+@media (prefers-color-scheme: dark) {
+  .MuiAppBar-root {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(51, 65, 85, 0.95) 100%) !important;
+    border-bottom-color: rgba(71, 85, 105, 0.5);
+    backdrop-filter: blur(20px);
+  }
+  
+  .MuiDrawer-paper {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(20px);
+    border-right-color: rgba(71, 85, 105, 0.3);
+  }
+  
+  .MuiTypography-h6 {
+    background: linear-gradient(135deg, #64b5f6, #90caf9);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Enhanced glassmorphism effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* AI-themed gradient animations */
+@keyframes aiGlow {
+  0% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(33, 150, 243, 0.5); }
+  100% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.3); }
+}
+
+.ai-glow {
+  animation: aiGlow 3s infinite;
+}
+
+/* Force header background styling */
+.header-forced-styling {
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%) !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Force navigation button styling */
+.nav-button-forced {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #616161 !important;
+  border: 1px solid rgba(224, 224, 224, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.nav-button-forced:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #1976d2 !important;
+  border-color: rgba(33, 150, 243, 0.3) !important;
+  transform: translateY(-2px) !important;
+}
+
+.nav-button-forced.active {
+  background: #e3f2fd !important;
+  color: #1976d2 !important;
+  border-color: #2196f3 !important;
+}
+
+/* Force text styling for better readability */
+.header-text-forced {
+  color: #212121 !important;
+  font-weight: 700 !important;
+}
+
+.header-subtext-forced {
+  color: #616161 !important;
+}
+
+/* Navigation text visibility improvements */
+.nav-text-contrast {
+  color: #616161 !important;
+  font-weight: 500;
+}
+
+.nav-text-contrast:hover {
+  color: #1976d2 !important;
+}
+
+/* Ensure proper background contrast for navigation */
+.nav-background-contrast {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(224, 224, 224, 0.3);
+}
+
+.nav-background-contrast:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(33, 150, 243, 0.3);
+} 

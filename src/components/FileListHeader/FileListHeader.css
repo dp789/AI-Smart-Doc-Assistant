@@ -1,0 +1,246 @@
+/* File List Header Customizations - White Theme */
+.file-list-header {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom animations for header elements */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.file-list-header {
+  animation: slideInFromTop 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .file-list-header .MuiToolbar-root {
+    padding: 0 12px !important;
+  }
+}
+
+/* Custom scrollbar for menus */
+.MuiMenu-paper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.MuiMenu-paper::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.MuiMenu-paper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.MuiMenu-paper::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Smooth transitions for all interactive elements */
+.MuiButton-root,
+.MuiIconButton-root,
+.MuiMenuItem-root {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom focus styles for accessibility */
+.MuiButton-root:focus-visible,
+.MuiIconButton-root:focus-visible,
+.MuiMenuItem-root:focus-visible {
+  outline: 2px solid #94a3b8;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Enhanced hover effects */
+.MuiButton-root:hover {
+  transform: translateY(-1px);
+}
+
+.MuiIconButton-root:hover {
+  transform: scale(1.05);
+  background-color: #f8fafc;
+}
+
+/* Custom chip styling */
+.MuiChip-root {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 16px;
+}
+
+/* TextField customizations */
+.MuiTextField-root .MuiOutlinedInput-root {
+  transition: all 0.3s ease;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+/* Menu customizations */
+.MuiMenu-paper {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid #e2e8f0;
+}
+
+/* Toolbar customizations */
+.MuiToolbar-root {
+  min-height: 64px !important;
+  padding: 0 16px !important;
+}
+
+/* AppBar styling for white theme */
+.MuiAppBar-root {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Typography enhancements */
+.MuiTypography-h6 {
+  text-shadow: none;
+  letter-spacing: -0.025em;
+}
+
+/* Responsive typography */
+@media (max-width: 600px) {
+  .MuiTypography-h6 {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Custom divider styling */
+.MuiDivider-root {
+  margin: 0.5rem 0;
+  opacity: 0.6;
+  border-color: #e2e8f0;
+}
+
+/* List item enhancements */
+.MuiListItemIcon-root {
+  transition: all 0.3s ease;
+}
+
+.MuiMenuItem-root:hover .MuiListItemIcon-root {
+  transform: scale(1.1);
+}
+
+/* Enhanced focus management */
+.MuiMenu-root:focus-within {
+  outline: none;
+}
+
+/* Custom loading states */
+.MuiButton-root.Mui-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Button hover effects */
+.MuiButton-outlined:hover {
+  border-width: 2px;
+}
+
+/* Smooth icon transitions */
+.MuiSvgIcon-root {
+  transition: all 0.3s ease;
+}
+
+/* Enhanced button shadows */
+.MuiButton-root:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom focus ring */
+.MuiButton-root:focus-visible::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid #94a3b8;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .file-list-header,
+  .MuiButton-root,
+  .MuiIconButton-root,
+  .MuiMenuItem-root,
+  .MuiAppBar-root {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Dark mode support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+  .MuiAppBar-root {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+    border-bottom-color: #475569;
+  }
+  
+  .MuiMenu-paper {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #475569;
+  }
+}
+
+/* Search field specific styling */
+.file-list-header .MuiTextField-root {
+  margin: 0;
+}
+
+.file-list-header .MuiInputBase-root {
+  font-size: 0.875rem;
+}
+
+/* Action buttons container */
+.file-list-header .MuiBox-root {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* View mode toggle specific styling */
+.file-list-header .MuiIconButton-root[aria-label*="view"] {
+  border-radius: 8px;
+  padding: 8px;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+  .file-list-header .MuiToolbar-root {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 16px !important;
+  }
+  
+  .file-list-header .MuiBox-root {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .file-list-header .MuiTextField-root {
+    flex-grow: 1;
+  }
+} 

@@ -1,0 +1,1431 @@
+/* Panel Header Styles */
+.panel-header {
+    padding: 32px 32px 28px 32px;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.panel-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    opacity: 0.6;
+}
+
+.panel-header h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.875rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.025em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.panel-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Panel Header with Tabs Layout */
+.panel-header-with-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    gap: 24px;
+    flex-wrap: nowrap;
+    min-height: 80px;
+}
+
+.panel-header-with-tabs::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    opacity: 0.6;
+}
+
+.header-text-section {
+    flex: 0 0 auto;
+    min-width: 200px;
+}
+
+.header-text-section h2 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.header-text-section p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Panel Content Styles */
+.panel-content {
+    flex: 1;
+    padding: 0;
+    overflow-y: auto;
+    height: 100%;
+    min-height: 0; /* Important for flexbox scrolling */
+    position: relative;
+    z-index: 5;
+}
+
+/* Ensure the panel container has proper height constraints */
+.panel-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Comprehensive override to ensure left panel scrolling works */
+.left-panel,
+.left-panel .panel-content,
+.left-panel .document-list-container,
+.left-panel .document-list {
+    /* Remove all height constraints */
+    max-height: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* Ensure proper flexbox behavior */
+.left-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+
+.left-panel .panel-content {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-bottom: 40px !important;
+    scroll-padding-bottom: 20px !important;
+    max-height: none !important;
+    height: auto !important;
+}
+
+.left-panel .document-list-container {
+    height: 100% !important;
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: none !important;
+    overflow: hidden !important;
+}
+
+.left-panel .document-list {
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    max-height: none !important;
+    height: auto !important;
+    padding-bottom: 40px !important;
+}
+
+/* Ensure content at the bottom is visible */
+.left-panel .panel-content::after {
+    content: '';
+    display: block;
+    height: 40px !important;
+    min-height: 40px !important;
+}
+
+/* Additional fixes for resizable panels */
+.resizable-panels .left-panel {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.resizable-panels .left-panel .panel-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Ensure proper scrolling behavior */
+.left-panel .panel-content,
+.left-panel .document-list {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* For iOS smooth scrolling */
+}
+
+/* Fix for any nested scrollable content */
+.left-panel .panel-content .scrollable-content {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Ensure proper spacing at the bottom of scrollable content */
+.left-panel .panel-content .scrollable-content::after {
+    content: '';
+    display: block;
+    height: 40px;
+}
+
+/* Additional fix to ensure content is fully scrollable */
+.left-panel .panel-content::after {
+    content: '';
+    display: block;
+    height: 40px;
+    min-height: 40px;
+}
+
+/* Fix for document list container scrolling */
+.document-list-container {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.document-list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 20px; /* Ensure last items are visible */
+}
+
+/* Ensure proper height for the main upload container */
+.upload-container {
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* Fix for resizable panels */
+.resizable-panels {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.resizable-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0; /* Important for flexbox scrolling */
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.content-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #64748b;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    margin: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.content-placeholder svg {
+    margin-bottom: 20px;
+    color: #94a3b8;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.content-placeholder h3 {
+    margin: 0 0 16px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #475057;
+    letter-spacing: -0.025em;
+}
+
+.content-placeholder p {
+    margin: 0;
+    max-width: 320px;
+    line-height: 1.6;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Tabs Container Styles */
+.tabs-container {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    position: relative !important;
+    z-index: 10 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.tabs-header {
+    display: flex !important;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+    box-shadow: 
+        0 4px 20px rgba(15, 23, 42, 0.25),
+        0 8px 40px rgba(30, 41, 59, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    position: relative !important;
+    z-index: 11 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 48px !important;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    flex-shrink: 1;
+    min-width: 280px;
+    flex: 1 1 auto;
+    max-width: 100%;
+}
+
+/* When tabs are in header layout */
+.panel-header-with-tabs .tabs-header {
+    margin-bottom: 0;
+    border-radius: 16px;
+    min-height: 48px;
+    max-width: none;
+    flex: 1 1 auto;
+}
+
+/* Responsive tabs based on panel width - using container-based sizing */
+.panel-header-with-tabs[style*="width"] .tabs-header {
+    min-width: 240px;
+}
+
+/* Very narrow panel - hide text labels */
+@container (max-width: 500px) {
+    .panel-header-with-tabs .tab-button {
+        padding: 8px 10px;
+        font-size: 0;
+        gap: 0;
+    }
+    
+    .panel-header-with-tabs .tab-button .tab-icon {
+        margin: 0;
+    }
+}
+
+/* Adaptive tab sizing based on available space */
+.panel-header-with-tabs {
+    container-type: inline-size;
+}
+
+.tabs-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.tabs-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+    opacity: 0.8;
+}
+
+.tab-button {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 12px 16px !important;
+    background: none !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    border-bottom: 3px solid transparent !important;
+    letter-spacing: 0.025em !important;
+    z-index: 12 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 48px !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 0;
+}
+
+/* When tabs are in header layout, make them more compact */
+.panel-header-with-tabs .tab-button {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    gap: 6px;
+    min-height: 44px;
+}
+
+/* Panel width based responsive behavior */
+/* When right panel is very narrow (dragged left) */
+.right-panel[data-width="narrow"] .panel-header-with-tabs .tab-button,
+.panel-header-with-tabs[data-width="narrow"] .tab-button {
+    padding: 8px 6px;
+    font-size: 0.7rem;
+    gap: 3px;
+}
+
+.right-panel[data-width="narrow"] .panel-header-with-tabs .tab-icon,
+.panel-header-with-tabs[data-width="narrow"] .tab-icon {
+    font-size: 0.9rem !important;
+}
+
+/* When right panel is extra narrow - show icons only */
+.right-panel[data-width="extra-narrow"] .panel-header-with-tabs .tab-button,
+.panel-header-with-tabs[data-width="extra-narrow"] .tab-button {
+    padding: 8px 4px;
+    font-size: 0 !important;
+    gap: 0;
+    min-width: 40px;
+}
+
+.right-panel[data-width="extra-narrow"] .panel-header-with-tabs .tab-button span:not(.tab-icon),
+.panel-header-with-tabs[data-width="extra-narrow"] .tab-button span:not(.tab-icon) {
+    display: none;
+}
+
+/* Progressive font size reduction for medium panel widths */
+.right-panel[data-width="medium"] .panel-header-with-tabs .tab-button,
+.panel-header-with-tabs[data-width="medium"] .tab-button {
+    padding: 9px 10px;
+    font-size: 0.75rem;
+    gap: 4px;
+}
+
+/* Responsive behavior for header with tabs */
+@media (max-width: 900px) {
+    .panel-header-with-tabs {
+        gap: 16px;
+        padding: 18px 24px;
+    }
+    
+    .header-text-section {
+        min-width: 180px;
+    }
+    
+    .header-text-section h2 {
+        font-size: 1.1rem;
+    }
+    
+    .header-text-section p {
+        font-size: 0.8rem;
+    }
+    
+    .tabs-header {
+        min-width: 280px;
+    }
+    
+    .panel-header-with-tabs .tab-button {
+        padding: 8px 10px;
+        font-size: 0.7rem;
+        gap: 4px;
+        min-height: 40px;
+    }
+    
+    .tab-icon svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .panel-header-with-tabs {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 20px;
+        min-height: auto;
+    }
+    
+    .header-text-section {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .header-text-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .header-text-section p {
+        font-size: 0.9rem;
+    }
+    
+    .tabs-header {
+        min-width: 100% !important;
+        width: 100%;
+    }
+    
+    .panel-header-with-tabs .tab-button {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+        gap: 6px;
+        min-height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel-header-with-tabs {
+        padding: 12px 16px;
+        gap: 10px;
+    }
+    
+    .header-text-section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .header-text-section p {
+        font-size: 0.8rem;
+    }
+    
+    .panel-header-with-tabs .tab-button {
+        padding: 10px 12px;
+        font-size: 0.75rem;
+        gap: 4px;
+        min-height: 44px;
+    }
+    
+    .tab-icon svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+}
+
+.tab-button:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%) !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%) !important;
+    color: #0f172a !important;
+    border-bottom: 4px solid #3b82f6 !important;
+    font-weight: 700 !important;
+    box-shadow: 
+        0 -6px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.05) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+    border-radius: 2px 2px 0 0;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+.tab-icon {
+    font-size: 1.1rem !important;
+    transition: transform 0.3s ease !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.tab-button:hover .tab-icon {
+    transform: scale(1.1);
+}
+
+.tab-button.active .tab-icon {
+    transform: scale(1.15);
+    color: #3b82f6 !important;
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+}
+
+.tab-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.tabs-content {
+    flex: 1 !important;
+    background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%) !important;
+    border-radius: 0 0 16px 16px !important;
+    padding: 24px !important;
+    border: 1px solid #e2e8f0 !important;
+    border-top: none !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    position: relative !important;
+    z-index: 10 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.tabs-content.sharepoint {
+    flex: 1;
+    background-color: #f8f9fa;
+    border-radius: 0 0 8px 8px;
+    border: none;
+    padding: 0;
+    position: relative;
+    z-index: 1; 
+    overflow: hidden; 
+}
+
+.tab-content {
+    height: 100% !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding-top: 20px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.tab-content.sharepoint {
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
+    overflow: hidden; 
+}
+/* Upload Area Styles */
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 40px 32px;
+    border: 3px dashed #cbd5e1;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    min-height: 320px;
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.06),
+        0 8px 32px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.upload-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.upload-area > * {
+    position: relative;
+    z-index: 1;
+}
+
+.upload-area:hover {
+    border-color: #3b82f6;
+    background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+    transform: translateY(-4px);
+    box-shadow: 
+        0 12px 40px rgba(59, 130, 246, 0.2),
+        0 6px 20px rgba(59, 130, 246, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Drag and drop states */
+.upload-area.drag-over {
+    border-color: #1d4ed8;
+    border-style: solid;
+    background: linear-gradient(145deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
+    transform: scale(1.03);
+    box-shadow: 
+        0 16px 50px rgba(59, 130, 246, 0.3),
+        0 8px 24px rgba(59, 130, 246, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.upload-area.uploading {
+    border-color: #f59e0b;
+    background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
+    cursor: not-allowed;
+}
+
+.upload-area.success {
+    border-color: #10b981;
+    background: linear-gradient(145deg, #ecfdf5 0%, #d1fae5 100%);
+}
+
+.upload-area.error {
+    border-color: #ef4444;
+    background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
+}
+
+.upload-area svg,
+.upload-area-icon {
+    margin-bottom: 16px;
+    color: #64748b;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.upload-area-icon {
+    width: 56px !important;
+    height: 56px !important;
+    color: #3b82f6;
+    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.25));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upload-area.uploading svg,
+.upload-area.uploading .upload-area-icon {
+    color: #f59e0b;
+    animation: pulse 2s infinite;
+}
+
+.upload-area.success svg,
+.upload-area.success .upload-area-icon {
+    color: #10b981;
+}
+
+.upload-area.error svg,
+.upload-area.error .upload-area-icon {
+    color: #ef4444;
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.05);
+    }
+}
+
+.upload-area h3 {
+    margin: 0 0 16px 0;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.025em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upload-area p {
+    margin: 0 0 24px 0;
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 1rem;
+    max-width: 320px;
+    font-weight: 500;
+}
+
+/* Ensure proper spacing and order for upload area children */
+.upload-area > * {
+    margin-bottom: 16px;
+}
+
+.upload-area > *:last-child {
+    margin-bottom: 0;
+}
+
+/* Selected file info */
+.selected-file {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 16px 0 24px 0;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.selected-file::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.selected-file::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+    z-index: 0;
+}
+
+.selected-file:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+}
+
+.selected-file p {
+    margin: 6px 0;
+    font-size: 0.85rem;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.selected-file p strong {
+    color: #1e293b;
+    font-weight: 600;
+    min-width: 50px;
+}
+
+/* Document Category Dropdown Styles - REMOVED
+   Category selection is now handled with default values in the backend */
+
+/* Upload button container - Fixed alignment */
+.upload-button-container {
+    width: 100%;
+    margin: 0 0 10px 90px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Upload actions */
+.upload-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.browse-button {
+    background: linear-gradient(135deg, #475569 0%, #64748b 50%, #94a3b8 100%);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1;
+    margin-left: 1.25rem;
+    box-shadow: 
+        0 4px 16px rgba(107, 114, 128, 0.25),
+        0 2px 8px rgba(107, 114, 128, 0.15);
+    letter-spacing: 0.025em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.browse-button:hover:not(:disabled) {
+    box-shadow: 
+        0 8px 24px rgba(107, 114, 128, 0.35),
+        0 4px 12px rgba(107, 114, 128, 0.25);
+    background: linear-gradient(135deg, #374151 0%, #4b5563 50%, #6b7280 100%);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.browse-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.upload-button {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.upload-button:hover::before {
+    left: 100%;
+}
+
+.upload-button:hover:not(:disabled) {
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    color: #ffffff;
+}
+
+.upload-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Upload progress */
+.upload-progress {
+    width: 100%;
+    margin: 16px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 8px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.upload-progress p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #374151;
+    font-weight: 600;
+}
+
+/* Upload message */
+.upload-message {
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin: 16px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+}
+
+.upload-message.success {
+    background: linear-gradient(145deg, #ecfdf5 0%, #d1fae5 100%);
+    color: #065f46;
+    border-color: #10b981;
+}
+
+.upload-message.error {
+    background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
+    color: #991b1b;
+    border-color: #ef4444;
+}
+
+.upload-message.uploading {
+    background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
+    color: #92400e;
+    border-color: #f59e0b;
+}
+
+.sharepoint-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 400px; 
+}
+
+.sharepoint-content svg,
+.sharepoint-icon {
+    margin-bottom: 16px;
+    color: #64748b;
+}
+
+.sharepoint-icon {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.sharepoint-content h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.sharepoint-content p {
+    margin: 0 0 24px 0;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.connection-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.form-input {
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.connect-button {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.connect-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Web URL Content Styles */
+.web-url-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 300px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.web-url-content svg,
+.web-url-icon {
+    margin-bottom: 16px;
+    color: #64748b;
+}
+
+.web-url-icon {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.web-url-content h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.web-url-content p {
+    margin: 0 0 24px 0;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.url-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.import-button {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.import-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* SharePoint loading and error states */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 40px;
+  height: 100%;
+  min-height: 300px;
+}
+
+.loading-state svg {
+  margin-bottom: 20px;
+  color: #0078d4;
+  animation: spin 2s linear infinite;
+}
+
+.loading-state h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  margin: 20px;
+  font-weight: 500;
+}
+
+/* Spinning animation for loading icon */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+
+}
+/* Responsive adjustments for category dropdown */
+@media (max-width: 768px) {
+    .category-dropdown {
+        margin: 10px 0 20px 0;
+    }
+    
+    .category-select {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .upload-area {
+        padding: 24px 20px;
+        min-height: 240px;
+        max-width: 100%;
+    }
+    
+    .upload-area h3 {
+        font-size: 1.1rem;
+    }
+    
+    .upload-area p {
+        font-size: 0.85rem;
+        max-width: 260px;
+    }
+    
+    .panel-header {
+        padding: 20px 16px;
+    }
+    
+    .panel-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .tabs-content {
+        padding: 20px 16px;
+    }
+    
+    .tab-button {
+        padding: 14px 18px;
+        font-size: 0.85rem;
+    }
+    
+    .upload-button {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .browse-button {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .upload-area {
+        padding: 20px 16px;
+        min-height: 220px;
+    }
+    
+    .upload-area h3 {
+        font-size: 1rem;
+    }
+    
+    .upload-area p {
+        font-size: 0.8rem;
+        max-width: 240px;
+    }
+    
+    .selected-file {
+        padding: 12px;
+        margin: 12px 0 20px 0;
+    }
+    
+    .panel-header {
+        padding: 16px 12px;
+    }
+    
+    .panel-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .tabs-content {
+        padding: 16px 12px;
+    }
+    
+    .tab-button {
+        padding: 12px 14px;
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+    
+    .upload-button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .browse-button {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Smooth scrolling for panel content */
+.panel-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.panel-content::-webkit-scrollbar-track {
+    background: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-radius: 4px;
+}
+
+.panel-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(145deg, #cbd5e1 0%, #94a3b8 100%);
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.panel-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(145deg, #94a3b8 0%, #64748b 100%);
+}
+
+/* Enhanced focus states for accessibility */
+.upload-button:focus,
+.browse-button:focus,
+.category-select:focus,
+.tab-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+/* Smooth transitions for all interactive elements */
+.upload-area *,
+.tab-button *,
+.upload-button,
+.browse-button,
+.category-select {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced hover effects for better user experience */
+.upload-area:hover .upload-area-icon {
+    transform: scale(1.05);
+}
+
+.selected-file:hover p strong {
+    color: #3b82f6;
+}
+
+/* Loading state improvements */
+.upload-area.uploading {
+    animation: subtle-pulse 2s infinite;
+}
+
+@keyframes subtle-pulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.005);
+        opacity: 0.98;
+    }
+}
+
+/* Category loading and error states - REMOVED
+   No longer needed since category selection is handled by backend defaults */
+
+
+
+.upload-button-upload {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-button-upload::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.upload-button-upload:hover::before {
+    left: 100%;
+}
+
+.upload-button-upload:hover:not(:disabled) {
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    color: #ffffff;
+}
+
+.upload-button-upload:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.upload-button-container-upload {
+    width: 100%;
+    margin: 0 0 10px 45px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}

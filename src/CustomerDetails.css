@@ -1,0 +1,360 @@
+/* Customer Details Container */
+.customer-details-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Customer Header */
+.details-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.customer-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.header-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.customer-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.customer-badges .badge {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Metric Cards */
+.metric-card {
+  background: white;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.metric-icon {
+  display: inline-block;
+  padding: 1rem;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+}
+
+.star-rating {
+  color: #ffc107;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* Customer Information Card */
+.details-card {
+  margin-bottom: 0;
+}
+
+.details-card .card-header {
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  border-bottom: 1px solid #dee2e6;
+  padding: 1.5rem;
+}
+
+.details-card .card-header h5 {
+  color: #495057;
+  font-weight: 600;
+}
+
+.details-card .card-body {
+  padding: 2rem;
+}
+
+/* Info Cards */
+.info-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  height: 100%;
+}
+
+.info-card:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  color: #667eea;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.info-content h6 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.info-content p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0;
+  word-break: break-word;
+}
+
+/* Additional Information */
+.additional-info {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.additional-info h5 {
+  color: #495057;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.info-box {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border-left: 4px solid #667eea;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.info-box p {
+  margin-bottom: 0;
+  color: #2c3e50;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Loading States */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error and Info Alerts */
+.error-alert, .info-alert {
+  border-radius: 12px;
+  border: none;
+  padding: 1.5rem;
+  margin: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.error-alert {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  color: #c62828;
+  border-left: 4px solid #d32f2f;
+}
+
+.info-alert {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #1565c0;
+  border-left: 4px solid #1976d2;
+}
+
+/* Progress Bar Enhancements */
+.progress {
+  height: 6px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.progress-bar {
+  border-radius: 10px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.6s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .details-header {
+    padding: 1.5rem;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .customer-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .header-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+  }
+  
+  .details-card .card-body {
+    padding: 1rem;
+  }
+  
+  .info-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .additional-info {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .customer-details-container {
+    margin: 0;
+    border-radius: 0;
+  }
+  
+  .details-header {
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .metric-card {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Animation Classes */
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover Effects */
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(102, 126, 234, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+.metric-card:hover::before {
+  opacity: 1;
+}
+
+/* Badge Styling */
+.badge {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.badge.bg-success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+}
+
+.badge.bg-info {
+  background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%) !important;
+} 

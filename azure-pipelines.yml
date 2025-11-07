@@ -1,0 +1,53 @@
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'Build Frontend'
+
+- script: |
+    cp -r public/assets build/assets
+  displayName: 'Copy static assets to build folder'
+
+- script: |
+    mkdir -p build/backend
+    cp -r backend/* build/backend/
+    cd build/backend
+    npm install --only=production
+  displayName: 'Prepare Backend for deployment'
+
+- script: |
+    echo "web: node backend/server.js" > build/Procfile
+  displayName: 'Create Procfile for Azure'
+
+- script: |
+    echo '{
+      "name": "fullstack-customer-app",
+      "version": "1.0.0",
+      "main": "backend/server.js",
+      "scripts": {
+        "start": "node backend/server.js"
+      },
+      "dependencies": {
+        "express": "^4.18.2",
+        "cors": "^2.8.5"
+      }
+    }' > build/package.json
+  displayName: 'Create root package.json for deployment'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Web-SmartDocs-Connection'
+    appName: 'nitor-smartdocs'
+    package: 'build'
+  displayName: 'Deploy to Azure Web App'

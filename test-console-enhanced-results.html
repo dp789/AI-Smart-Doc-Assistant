@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Results Console Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        .button {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background: #45a049;
+        }
+        .code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+        .status {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .success { color: #4CAF50; }
+        .error { color: #f44336; }
+        .warning { color: #ff9800; }
+        .info { color: #2196F3; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Enhanced Results Console Test</h1>
+    
+    <div class="card">
+        <h2>📋 Test Instructions</h2>
+        <p>This page will help you test the Enhanced Results Panel functionality:</p>
+        
+        <ol>
+            <li>Open the <strong>AI Workflow Builder</strong> page in another tab: <a href="http://localhost:3000/ai-workflow" target="_blank" style="color: #4CAF50;">http://localhost:3000/ai-workflow</a></li>
+            <li>Open browser console (F12) on that page</li>
+            <li>Type and execute the test functions below</li>
+            <li>Check if the Enhanced Results Panel opens</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h2>🔧 Console Test Commands</h2>
+        
+        <h3>✅ Test 1: Enhanced Results Panel</h3>
+        <div class="code">testEnhancedResults()</div>
+        <p><strong>Expected:</strong> Beautiful Enhanced Results Panel should open with comprehensive mock data</p>
+        
+        <h3>✅ Test 2: Clear Enhanced Results</h3>
+        <div class="code">clearEnhancedResults()</div>
+        <p><strong>Expected:</strong> Enhanced Results Panel should close and data should be cleared</p>
+        
+        <h3>✅ Test 3: Debug Workflow Results</h3>
+        <div class="code">debugWorkflowResults()</div>
+        <p><strong>Expected:</strong> Console should show current workflow execution state</p>
+        
+        <h3>✅ Test 4: Force Enhanced Results</h3>
+        <div class="code">forceEnhancedResults()</div>
+        <p><strong>Expected:</strong> Enhanced Results Panel should open regardless of current state</p>
+    </div>
+
+    <div class="card">
+        <h2>🔍 Debugging Authentication Issues</h2>
+        
+        <h3>Check Authentication Status:</h3>
+        <div class="code">
+// Check if user is authenticated<br>
+console.log('User authenticated:', !!localStorage.getItem('authToken'));<br>
+console.log('Auth headers available:', typeof getAuthHeaders === 'function');
+        </div>
+        
+        <h3>Test Enhanced Analysis (if authenticated):</h3>
+        <div class="code">
+// Test the enhanced analysis endpoint<br>
+fetch('/api/enhanced-analysis/comprehensive', {<br>
+&nbsp;&nbsp;method: 'POST',<br>
+&nbsp;&nbsp;headers: { 'Content-Type': 'application/json' },<br>
+&nbsp;&nbsp;body: JSON.stringify({<br>
+&nbsp;&nbsp;&nbsp;&nbsp;documentContent: 'Test document content',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;options: { modelType: 'gpt4o-mini' }<br>
+&nbsp;&nbsp;})<br>
+}).then(r => r.json()).then(console.log).catch(console.error);
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🎯 Expected Results</h2>
+        
+        <div class="status success">✅ SUCCESS SCENARIO:</div>
+        <ul>
+            <li>Enhanced Results Panel opens with beautiful UI</li>
+            <li>Shows comprehensive analysis with multiple sections</li>
+            <li>All analysis components are displayed (summary, keywords, sentiment, etc.)</li>
+            <li>Export buttons are available</li>
+            <li>Statistics show proper counts</li>
+        </ul>
+        
+        <div class="status error">❌ FAILURE SCENARIOS:</div>
+        <ul>
+            <li><strong>Function not found:</strong> testEnhancedResults is not a function</li>
+            <li><strong>Panel doesn't open:</strong> No visual change occurs</li>
+            <li><strong>Empty panel:</strong> Panel opens but shows "No Analysis Results Available"</li>
+            <li><strong>Console errors:</strong> JavaScript errors in console</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>🚀 Next Steps</h2>
+        
+        <p><strong>If console test works:</strong></p>
+        <ul>
+            <li>✅ Enhanced Results Panel is working correctly</li>
+            <li>Issue is in workflow execution/authentication</li>
+            <li>Test actual AI workflow with authentication</li>
+        </ul>
+        
+        <p><strong>If console test fails:</strong></p>
+        <ul>
+            <li>❌ Component integration issue</li>
+            <li>Check browser console for errors</li>
+            <li>Verify React component is loaded</li>
+        </ul>
+        
+        <p><strong>For workflow testing:</strong></p>
+        <ul>
+            <li>Create simple workflow: Document → AI Agent</li>
+            <li>Set AI Agent to "Comprehensive Analysis"</li>
+            <li>Execute and check browser console for auth errors</li>
+            <li>Look for enhanced results auto-opening</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Add some helpful functions for this test page
+        window.openAIWorkflow = () => {
+            window.open('http://localhost:3000/ai-workflow', '_blank');
+        };
+        
+        window.testInstructions = () => {
+            console.log(`
+🧪 Enhanced Results Test Instructions:
+
+1. Go to: http://localhost:3000/ai-workflow
+2. Open console (F12)
+3. Run: testEnhancedResults()
+4. Check if Enhanced Results Panel opens
+
+If successful: ✅ Panel working, test real workflow
+If failed: ❌ Component issue, check console errors
+            `);
+        };
+        
+        console.log('🧪 Enhanced Results Test Page Loaded');
+        console.log('💡 Run testInstructions() for guidance');
+    </script>
+</body>
+</html>
