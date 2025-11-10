@@ -7,11 +7,9 @@ const axios = require('axios');
 class AzureOpenAIService {
   constructor() {
     // Azure OpenAI configuration from environment variables
-    this.endpoint = process.env.AZURE_OPENAI_ENDPOINT || 
-                   'https://suchi-m5s861xi-eastus.cognitiveservices.azure.com/';
-    this.apiKey = process.env.AZURE_OPENAI_API_KEY ||
-                  'REDACTED_AZURE_OPENAI_KEY';
-    this.apiVersion = process.env.AZURE_OPENAI_API_VERSION || '2024-12-01-preview';
+    this.endpoint = process.env.AZURE_OPENAI_ENDPOINT;
+    this.apiKey = process.env.AZURE_OPENAI_API_KEY;
+    this.apiVersion = process.env.AZURE_OPENAI_API_VERSION;
     
     // Model deployments (these should match your Azure OpenAI deployments)
     this.deployments = {
