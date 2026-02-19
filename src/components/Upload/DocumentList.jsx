@@ -70,7 +70,10 @@ import './DocumentList.css';
 const BYPASS_USER_ID = 'd4b2fbfe-702b-49d4-9b42-41d343c26da5';
 const INGESTION_SOURCE_ID = 3;
 const CORS_PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
-const TARGET_INGEST_URL = 'https://smartdocs-funcapp-783.azurewebsites.net/api/process_smartdocs_document?code=E9YySL3xbCQVPydpn5nD-ebjRxACxdoCWsyvAOwbiLkxAzFuQmLMYA%3D%3D';
+// Do NOT hardcode function keys in client code. Prefer calling the backend proxy at /api/ingest-document.
+// If you must call a function directly from the client (not recommended), set REACT_APP_TARGET_INGEST_URL to the full URL
+// (note: any key included in a client build will be public). By default we call the backend proxy.
+const TARGET_INGEST_URL = process.env.REACT_APP_TARGET_INGEST_URL || null; // e.g. 'https://example.azurewebsites.net/api/process_smartdocs_document'
 
 // Status configurations
 const STATUS_CONFIG = {
